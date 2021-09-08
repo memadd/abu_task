@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}enter Weather data{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+
+    <div class="row">
+
+
+        <!-- Right Song Info -->
+        <div class="col-sm-8 col-md-9">
+
+            
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>enter Weather data</h3>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="{% url 'weather_form' %}" method="post" enctype="multipart/form-data" onsubmit='this.submit();this.reset();return false;'>
+                        {% csrf_token %}
+                        
+                        {% include 'weather/form_template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
